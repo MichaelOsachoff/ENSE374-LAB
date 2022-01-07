@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset = "utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Michael's ENSE-374 - Lab 7 </title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+    <h1>Very Not Easy Lab Assignment</h1>
+    <div class="container" style="margin-bottom:50px;width:20%;">
+        <button type="button" class="collapsible" style="text-align:center;color:black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16" style="color:black">
+                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+            </svg>
+            <span>Logged in as <%= username %>!</span>
+            </button>
+            <section style="padding-top:5%;">
+                <form action="/Logout" method="post">
+                    <div style="text-align:center">
+                        <input type="submit" class="btn btn-primary" value="Logout"/> <br>
+                    </div>
+                </form>
+                
+            </section>
+    </div>
+
+    <div class="container">
+        <form action="/addTask" method = "post">
+            <div class="input-group">
+                <input type="text" class="form-control" name="textBox" placeholder="Enter new task" id="newTask"/>
+                <input type="submit" value="Add" class="btn" name="addButton" id="newTaskButton">
+            </div>
+        </form>
+
+        <form action = "/removeTasks" method = "post">
+            <div style="text-align:center;">
+                <br><input type="submit" name="removeButton" value="Remove Complete" class="btn" id="removeCompleteButton"/> <br> <br>
+            </div>
+        </form>
+
+        <div class="tasks">
+            <%- include("partials/claimingTask.ejs", taskList, username) -%>
+        </div>
+    </div>
+
+    <footer>
+        Created by Michael Osachoff
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+    </script>
+</body>
+
+</html>

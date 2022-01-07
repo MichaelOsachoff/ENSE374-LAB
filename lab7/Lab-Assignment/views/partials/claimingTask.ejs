@@ -1,0 +1,55 @@
+<% for(let task of taskList) { %>
+
+    <% if(task.state === "unclaimed") 
+    { %>
+        <form action="/claim" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="hiddenElement" id="" hidden value=<%= task._id %>>
+                <input type="textbox" readonly="" name="textBoxInput" class="form-control" value = <%= task.inputText %>>
+                <input type="submit" value="Claim" class="btn" id="abandonButton">   
+            </div>
+        </form>
+    <%}
+    else if(task.state === "claimed" && task.claimingUser!= username) 
+    { %>
+        <div class="input-group mb-3">
+            <input type="text" name="hiddenElement" id="" hidden value=<%= task._id %>>
+            <input type="textbox" readonly="" id="inputText" class="form-control" value = <%= task.inputText %>>
+            <input type="submit" value="Claimed by other user" class="btn" id="abandonButton" disabled>   
+        </div>
+    <%}
+    else if(task.state === "claimed" && task.claimingUser===username) 
+    { %>
+        <form action="/Abandon" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="hiddenElement" id="" hidden value=<%= task._id %>>
+                <input type="checkbox" name="taskCheckBox" class="form-check mx-2" style="display: inline;" unchecked="" id="checkbox-1" onChange="this.form.submit()" value="true" unchecked>
+                <input type="textbox" readonly="" id="inputText" class="form-control" value = <%= task.inputText %>>
+                <input type="submit" value="Abandon" class="btn" id="abandonButton">
+            </div>
+        </form> 
+    <%}
+    else if(task.isTaskDone && task.claimingUser===username) 
+    { %>
+        <form action="/uncheck" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="hiddenElement" id="" hidden value=<%= task._id %>>
+                <input type="checkbox" name="taskCheckBox" class="form-check mx-2" style="display: inline;" unchecked="" id="checkbox-1" onChange="this.form.submit()" value = "true" checked> 
+                <input type="textbox" readonly="" id="inputText" class="form-control" style="text-decoration: line-through;" value = <%= task.inputText %> >
+            </div>
+        </form> 
+    <%}
+    else if(task.isTaskDone)
+    { %>
+        <div class="input-group mb-3">
+            <input type="text" name="hiddenElement" id="" hidden value=<%= task._id %>>
+            <input type="textbox" readonly="" id="inputText" class="form-control" style="text-decoration: line-through;" value = <%= task.inputText %> >
+        </div>
+    <%} 
+    else
+    { %>
+        <p>ERROR CREATING TASK</p>
+    <%} 
+    %>
+
+<% } %>

@@ -1,0 +1,28 @@
+{
+    "userList": [
+        {
+            "username": "user1",
+            "password": "password"
+        },
+        {
+            "username": "user2",
+            "password": "password"
+        },
+        {
+            "username": "user3",
+            "password": "password123"
+        },
+        {
+            "username": "josh.perez@gmail.com",
+            "password": "password"
+        },
+        {
+            "username": "bob",
+            "password": "password"
+        },
+        {
+            "username": "Adam",
+            "password": "123abc"
+        }
+    ]
+}

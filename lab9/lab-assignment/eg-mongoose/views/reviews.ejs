@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Styles from w3Schools table tutorial -->
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Game Name</th>
+            <th>Score</th>
+            <th>Review Text</th>
+        </tr>
+    </thead>
+    <tbody>
+    <!-- We want to repeat this for each game in the database -->
+    <% for (const result of results) { %>
+        <tr>
+            <td><%= result.userName %></td>
+            <td><%= result.gameName %></td>
+            <td><%= result.score %></td>
+            <td><%= result.reviewText %></td>
+        </tr>
+    <% } %>
+    <!-- End repeating bit -->
+    </tbody>
+</table>
+<form action="/add-review" method="get">
+    <input type="submit" value="Add a Review!">
+</form>
+<form action="/logout" method="get">
+    <input type="submit" value="Log Out!">
+</form>
+</body>
+</html>

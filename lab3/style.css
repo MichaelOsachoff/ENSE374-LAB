@@ -1,0 +1,67 @@
+h1 
+{
+  text-align: center;
+  margin-top:10%;
+  margin-bottom:1%;
+}
+h2
+{
+  text-align: center;
+}
+section
+{
+  margin: 0 auto;
+  padding:5%;
+  padding-top:3%;
+  padding: 18px auto;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+footer
+{
+  background:darkgrey;
+  color:white;
+  margin:0;
+  text-align:center;
+  padding: 1rem 1rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.container
+{
+  width:25%;
+  border:1px solid grey;
+  border-radius: 1%;
+  box-shadow:  1px 1px 5px 5px grey;
+  padding:0;
+  margin-bottom:200px;
+}
+.collapsible {
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border:none;
+  border-bottom:1px solid grey;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+.toDoButton
+{
+  color:grey;
+  float:right;
+}
